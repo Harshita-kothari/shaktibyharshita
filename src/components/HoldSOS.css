@@ -1,0 +1,9 @@
+.hold-sos-wrap { text-align:center; margin:25px auto; }
+.hold-sos { --hold-angle:0deg; position:relative; width:210px; height:210px; border:0; border-radius:50%; padding:9px; background:conic-gradient(#b12766 var(--hold-angle),#ffd8e4 0); cursor:pointer; touch-action:none; user-select:none; -webkit-user-select:none; box-shadow:0 0 0 10px #ffeaf0,0 14px 35px #dd47782b; }
+.hold-sos-inner { height:100%; width:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:13px; border:3px solid #ffffff85; border-radius:50%; color:white; background:linear-gradient(145deg,#ff768a,#ed285d); }
+.hold-sos strong { font-size:52px; font-weight:750; line-height:1; letter-spacing:1px; }.hold-sos small { font-size:12px; }
+.hold-sos.holding .hold-sos-inner { animation:sos-breathe .7s ease-in-out infinite alternate; }
+.hold-sos:focus-visible { outline:3px solid #893bb5; outline-offset:14px; }
+.hold-sos-wrap>p { font-size:11px; color:#8c7886; margin:25px 0 0; line-height:1.6; }
+@keyframes sos-breathe { to { filter:brightness(1.12); } }
+@media(prefers-reduced-motion:reduce) { .hold-sos.holding .hold-sos-inner { animation:none; } }

@@ -1,0 +1,22 @@
+{
+  "id": "/",
+  "name": "Shakti — Safety. Support. Always.",
+  "short_name": "Shakti",
+  "description": "Personal safety app: SOS, live location sharing, trusted contacts and safety timer.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff7fb",
+  "theme_color": "#b34a9b",
+  "categories": ["lifestyle", "utilities"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "SOS", "url": "/sos", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Live location", "url": "/live-location", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

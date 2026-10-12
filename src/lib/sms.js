@@ -1,0 +1,3 @@
+import {getLanguage} from './i18n';
+export function smsLink(phone,message,ios=false){if(!/^\+91[6-9]\d{9}$/.test(phone))throw Error('Invalid contact number');return `sms:${phone}${ios?'&':'?'}body=${encodeURIComponent(message)}`;}
+export function safetyMessage(location){if(getLanguage()==='hi')return 'शक्ति SOS: मुझे मदद चाहिए। कृपया मुझे कॉल करें और मेरी सुरक्षा की जाँच करें।'+(location?` मेरी लोकेशन: https://www.google.com/maps?q=${location.latitude},${location.longitude}`:' लोकेशन उपलब्ध नहीं है।');return 'Shakti SOS: I need help. Please call me and check on me.'+(location?` My location at ${new Date(location.time).toLocaleTimeString()}: https://www.google.com/maps?q=${location.latitude},${location.longitude}`:' Location is not available.');}

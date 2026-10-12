@@ -1,0 +1,228 @@
+
+.police-page {
+  min-height: 100vh;
+  background: #fff7fb;
+  color: #292238;
+  padding-bottom: 30px;
+}
+
+.police-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 6%;
+  background: white;
+  border-bottom: 1px solid #f4e6ef;
+}
+
+.police-back {
+  width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 14px;
+  background: #fff0f7;
+  color: #c23c83;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.police-header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.police-header p {
+  margin: 4px 0 0;
+  color: #8b8293;
+  font-size: 13px;
+}
+
+.police-content {
+  width: min(680px, 90%);
+  margin: 28px auto;
+}
+
+.police-hero {
+  padding: 30px 24px;
+  border-radius: 28px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #d84f91, #a344a4);
+  box-shadow: 0 14px 35px rgba(177, 61, 132, 0.18);
+}
+
+.police-hero-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 23px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.police-hero h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.police-hero p {
+  max-width: 430px;
+  margin: 12px auto 22px;
+  color: #ffedf6;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.police-call-btn {
+  min-height: 52px;
+  padding: 0 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  color: #b33c7d;
+  background: white;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.police-call-btn:hover {
+  transform: translateY(-2px);
+}
+
+.police-caption {
+  display: block;
+  margin-top: 12px;
+  color: #ffe5f1;
+  font-size: 12px;
+}
+
+.police-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #f5dfb9;
+  border-radius: 22px;
+  background: #fffaf0;
+}
+
+.police-info-icon {
+  color: #c1842c;
+}
+
+.police-info-card h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.police-info-card p {
+  margin: 7px 0 0;
+  color: #85765f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.police-options {
+  margin-top: 28px;
+}
+
+.police-options h2 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+
+.police-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px;
+  margin-bottom: 12px;
+  border: 1px solid #f0e3ec;
+  border-radius: 20px;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.police-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(90, 44, 75, 0.06);
+}
+
+.option-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #c23c83;
+  background: #fff0f7;
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.option-text strong {
+  font-size: 14px;
+}
+
+.option-text small {
+  color: #928797;
+  font-size: 12px;
+}
+
+.option-arrow {
+  margin-left: auto;
+  color: #b7a8b7;
+  font-size: 28px;
+}
+
+.police-disclaimer {
+  margin-top: 22px;
+  color: #93889a;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .police-header {
+    padding: 18px 5%;
+  }
+
+  .police-content {
+    width: 92%;
+    margin-top: 20px;
+  }
+
+  .police-hero {
+    padding: 25px 18px;
+  }
+
+  .police-hero h2 {
+    font-size: 21px;
+  }
+}.police-hero h2 { color:white; font-weight:700; }
+.police-content { width:min(820px,calc(100% - 32px)); }
+.women-call-card { display:flex; align-items:center; justify-content:space-between; gap:20px; background:white; border:1px solid #eccfe1; padding:22px; border-radius:22px; margin-top:20px; }
+.women-call-card h2 { font-size:18px; font-weight:700; margin:0 0 8px; }
+.women-call-card p { font-size:13px; color:#695870; }
+.women-call-card small { display:block; font-size:11px; color:#75647d; margin-top:8px; line-height:1.6; }
+.women-call-card .police-call-btn { background:#fff0f7; flex-shrink:0; }
+.police-page .option-text strong { color:#35243e; }.police-page .option-text small,.police-disclaimer { color:#74637d; }
+.police-page a:focus-visible,.police-page button:focus-visible { outline:3px solid #b16bc4; outline-offset:3px; }
+@media(max-width:480px) { .women-call-card { flex-direction:column; align-items:stretch; padding:18px; }.women-call-card .police-call-btn { width:100%; } }

@@ -1,0 +1,158 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+.girl-image {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  width: min(82%, 340px);
+  height: 350px;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  user-select: none;
+}
+/* Keep app screens readable regardless of the system colour theme. */
+:root { color-scheme:light; --text:#62546c; --text-h:#30223b; --bg:#fff7fb; --border:#eadde8; }
+html { overflow-y:auto; }
+body { min-width:320px; color:#30223b; }
+#root { width:100%; border:0; text-align:left; }
+button,input,select,textarea { font-family:inherit; }
+button { color:inherit; }
+h1,h2 { color:#30223b; }
+[class$='-back'] { flex-shrink:0; }
+@media(prefers-color-scheme:dark) { :root { --text:#62546c; --text-h:#30223b; --bg:#fff7fb; --border:#eadde8; } }
+
+/* Explicit user-selected dark theme across safety screens. */
+html[data-theme="dark"] { color-scheme:dark; --text:#d7cce0; --text-h:#f3eaf7; --bg:#201a29; --border:#44334d; background:#201a29; }
+html[data-theme="dark"] body,html[data-theme="dark"] #root { background:#201a29; color:#eee3f5; }
+html[data-theme="dark"] :is(.dashboard-page,.live-location-page,.contacts-page,.police-page,.sos-page,.timer-page,.fake-page:not(.fake-full),.settings-page,.profile-page) { background:#201a29; color:#eee3f5; }
+html[data-theme="dark"] :is(.dashboard-header,.location-header,.contacts-header,.police-header,.sos-header,.timer-header,.fake-header,.settings-header,.profile-header,.dashboard-nav) { background:#2b2235; border-color:#47364f; }
+html[data-theme="dark"] :is(.tool-card,.location-info-card,.saved-contact,.contact-modal,.police-option,.women-call-card,.sos-countdown-card,.sos-result-card,.timer-card,.fake-card,.notification-panel,.settings-card,.profile-card,.location-quick-nav button) { background:#30263a; color:#eee3f5; border-color:#4e3a55; }
+html[data-theme="dark"] :is(h1,h2,h3,h4,.tool-info h3,.option-text strong,.location-info-heading h2,.women-call-card h2) { color:#f1e7f7; }
+html[data-theme="dark"] :is(.dashboard-page,.live-location-page,.contacts-page,.sos-page,.timer-page,.fake-page:not(.fake-full),.settings-page,.profile-page) p,html[data-theme="dark"] :is(.option-text small,.police-disclaimer,.women-call-card p,.women-call-card small,.contacts-section-heading span,.location-safety-note,.timer-demo,.fake-sound,.dashboard-greeting) { color:#cbb8d6; }
+html[data-theme="dark"] :is(.safety-status,.privacy-card,.timer-note,.journey-privacy-card) { background:#253a33; border-color:#3d5b4d; color:#b1e4c7; }
+html[data-theme="dark"] :is(.safety-status,.privacy-card,.timer-note) :is(h2,h3,p) { color:#b9e2cb; }
+html[data-theme="dark"] :is(.coordinates-box,.dashboard-more-toggle,.notification-button,.contacts-back,.location-back,.police-back,.sos-back,.timer-header>button,.fake-header>button,.location-share-actions button,.timer-links button) { background:#3a2a43; color:#edc6e4; border-color:#624568; }
+html[data-theme="dark"] :is(.location-map-card) { background:linear-gradient(135deg,#42304a,#33253d); border-color:#604663; color:#f2dcf1; }
+html[data-theme="dark"] :is(.map-subtitle,.location-notice,.timer-message,.fake-note,.contact-help) { color:#cdb4d6; }
+html[data-theme="dark"] :is(input,select,textarea) { background:#241b2d; color:#f1e7f7; border-color:#694b70; }
+html[data-theme="dark"] .timer-ring { background:radial-gradient(closest-side,#30263a 88%,transparent 89%),conic-gradient(#e485bf var(--timer-progress),#50354e 0); }
+html[data-theme="dark"] .timer-ring strong { color:#f1a5d1; }
+html[data-theme="dark"] .police-info-card { background:#3b3224; border-color:#62523a; color:#f2dfb7; }
+html[data-theme="dark"] .police-info-card p { color:#ddc8a5; }
+html[data-theme="dark"] .police-hero h2 { color:white; }
+@media(max-width:480px) { .dashboard-header-actions { gap:6px; }.dashboard-header-actions .notification-button { width:37px;height:39px; }.dashboard-header { gap:10px; }.dashboard-header h1 { font-size:20px; } }
+html[data-theme="dark"] .sos-section { background:linear-gradient(145deg,#39273d,#302336); border-color:#66435d; }
+html[data-theme="dark"] .sos-caption { color:#e8b9d8; }
+html[data-theme="dark"] .hold-sos-wrap>p { color:#d2b8ce; }

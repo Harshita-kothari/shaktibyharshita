@@ -1,0 +1,109 @@
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color: #30223b;
+  background: #fff7fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+
+#root:has(.splash) { max-width:430px; margin:0 auto; border:0; box-shadow:0 0 60px #49223712; }
+.splash { width:100%; min-height:100svh; display:flex; flex-direction:column; overflow:hidden; position:relative; background:#fff4f7; color:#452638; }
+.splash .sky { position:relative; flex:1; min-height:470px; overflow:hidden; isolation:isolate; background:radial-gradient(ellipse at 50% 65%,#ffe0eb,transparent 65%),linear-gradient(180deg,#fff9fb,#ffeaf2); }
+.splash .brand-area { position:relative; z-index:3; padding:40px 20px 0; text-align:center; }
+.splash .logo-shield { width:72px; height:76px; margin:0 auto 10px; position:relative; display:grid; place-items:center; }
+.splash .shield-outline { width:66px; height:72px; stroke:#ce356b; }
+.splash .logo-heart { position:absolute; width:28px; height:28px; top:22px; left:22px; stroke:#ce356b; color:#ce356b; }
+.splash .brand-area h1 { margin:0 0 8px; font-size:42px; line-height:1.15; font-weight:800; letter-spacing:-1.8px; color:#50243b; }
+.splash .brand-area h1 span { color:#d4326d; }
+.splash .brand-area p { font-size:14px; color:#805365; letter-spacing:.3px; }
+.splash .girl-image { position:absolute; z-index:2; bottom:0; left:50%; transform:translateX(-50%)!important; width:86%; height:260px; object-fit:contain; object-position:bottom; pointer-events:none; }
+.splash .city { position:absolute; bottom:0; left:0; width:100%; height:130px; display:flex; align-items:flex-end; justify-content:space-around; opacity:.5; background:linear-gradient(transparent,#f0c7d8); }
+.splash .city span { width:8%; height:65%; background:#eab2c8; border-radius:5px 5px 0 0; }
+.splash .city span:nth-child(2n) { height:90%; width:6%; }
+.splash .city span:nth-child(3n) { height:48%; width:10%; }
+.splash .cloud { position:absolute; width:85px; height:26px; background:#ffffffa6; border-radius:40px; }
+.splash .cloud::before { content:""; position:absolute; width:38px; height:38px; border-radius:50%; background:inherit; left:18px; bottom:4px; }
+.splash .cloud-one { top:215px; left:-25px; }.splash .cloud-two { top:260px; right:-10px; }.splash .cloud-three { top:360px; left:15px; width:50px; opacity:.5; }
+.splash .bottom-panel { position:relative; z-index:4; display:flex; flex-direction:column; gap:12px; padding:28px 26px max(28px,env(safe-area-inset-bottom)); width:100%; background:#fff; border-radius:28px 28px 0 0; margin-top:-8px; box-shadow:0 -6px 25px #8f31500a; }
+.splash .welcome-copy { text-align:center; margin-bottom:8px; }
+.splash .welcome-copy h2 { color:#50243b; font-size:22px; line-height:1.3; font-weight:750; margin:0 0 7px; letter-spacing:-.5px; }
+.splash .welcome-copy p { color:#866775; font-size:13px; line-height:1.6; }
+.splash .get-started,.splash .login-button { width:100%; min-height:52px; border-radius:15px; display:flex; align-items:center; justify-content:center; gap:10px; font:700 15px system-ui; transform:none!important; cursor:pointer; }
+.splash .get-started { color:#fff; border:0; background:linear-gradient(110deg,#d6336c,#e7497d); box-shadow:0 7px 18px #d6336c25; }
+.splash .login-button { color:#b82c5b; background:#fff7fa; border:1px solid #f1d2dd; }
+.splash button:focus-visible { outline:3px solid #872444; outline-offset:3px; }
+.splash .welcome-footnote { text-align:center; font-size:11px; color:#9b7d8b; margin-top:5px; }
+@media(min-width:600px) { #root:has(.splash) { margin:24px auto; border-radius:30px; overflow:hidden; }.splash { min-height:780px; } }
+@media(max-height:720px) and (max-width:599px) { .splash .sky { min-height:400px; }.splash .brand-area { padding-top:24px; }.splash .girl-image { height:220px; }.splash .bottom-panel { padding-top:20px; gap:10px; } }
+@media(prefers-reduced-motion:reduce) { .splash * { animation:none!important; transition:none!important; } }
+
+html[data-theme] .splash .brand-area h1,html[data-theme] .splash .welcome-copy h2 { color:#50243b; }
+html[data-theme] .splash .brand-area h1 span { color:#d4326d; }
+html[data-theme] .splash .brand-area p { color:#805365; }
+html[data-theme] .splash .welcome-copy p { color:#866775; }
+
+/* A continuous welcome canvas, without a separate white card. */
+.splash { background:#fff0f5; }
+.splash .sky { background:radial-gradient(ellipse at 50% 68%,#ffdfeb,transparent 68%),linear-gradient(180deg,#fff8fb,#fff0f5); }
+.splash .city { background:linear-gradient(transparent,#fff0f5); opacity:.32; }
+.splash .bottom-panel { background:#fff0f5; border:0; border-radius:0; box-shadow:none; margin-top:0; padding:22px 28px max(30px,env(safe-area-inset-bottom)); gap:12px; }
+.splash .welcome-copy { margin-bottom:10px; }
+.splash .welcome-copy h2 { font-size:23px; letter-spacing:-.7px; }
+.splash .welcome-copy p { font-size:13px; line-height:1.7; }
+.splash .get-started { background:#cc3266; box-shadow:0 6px 16px #bd28551c; }
+.splash .login-button { background:transparent; border:1px solid #dfa8bc; color:#a02c53; }
+.splash .welcome-footnote { margin-top:8px; color:#94717f; }
+
+/* Stronger visual hierarchy for the welcome experience. */
+.splash { background:#ffedf3; }
+.splash .sky { min-height:455px; background:radial-gradient(ellipse at 50% 90%,#f6b7cf 0%,#ffe0eb 42%,#fff5f8 85%); }
+.splash .brand-area { padding-top:28px; }
+.splash .welcome-eyebrow { display:block; margin-bottom:16px; color:#9e4966; font-size:9px; font-weight:750; letter-spacing:1.8px; }
+.splash .logo-shield { width:52px; height:54px; margin-bottom:8px; }
+.splash .shield-outline { width:49px; height:54px; }
+.splash .logo-heart { width:21px; height:21px; top:16px; left:16px; }
+.splash .brand-area h1 { font-size:44px; letter-spacing:-2px; }
+.splash .brand-area p { font-size:12px; letter-spacing:.8px; }
+.splash .hero-halo { position:absolute; width:290px; height:290px; border:1px solid #ffffffb3; border-radius:50%; bottom:-55px; left:50%; transform:translateX(-50%); background:linear-gradient(145deg,#ffffff85,#f7b7ce44); box-shadow:0 0 0 22px #ffffff26,0 0 0 44px #ffffff16; }
+.splash .girl-image { height:260px; width:90%; }
+.splash .safety-pill { position:absolute; z-index:3; bottom:28px; left:20px; padding:10px 13px; display:flex; align-items:center; gap:7px; border:1px solid #fff8; border-radius:50px; background:#fff4f4e6; color:#873650; box-shadow:0 5px 18px #92345312; font-size:10px; font-weight:650; }
+.splash .city { height:105px; opacity:.18; }
+.splash .cloud { opacity:.5; }
+.splash .bottom-panel { background:linear-gradient(180deg,#ffe0eb,#ffedf3 24%); padding:24px 28px 26px; gap:11px; }
+.splash .welcome-copy { text-align:left; margin-bottom:10px; }
+.splash .welcome-copy h2 { font-size:34px; line-height:1.08; letter-spacing:-1.3px; font-weight:800; margin-bottom:12px; }
+.splash .welcome-copy p { font-size:12px; line-height:1.65; }
+.splash .get-started { min-height:54px; background:linear-gradient(110deg,#b71f56,#df3f78); box-shadow:0 8px 20px #bb24552b; border-radius:16px; }
+.splash .login-button { min-height:46px; border:0; background:transparent; font-size:14px; }
+.splash .welcome-footnote { margin-top:0; font-size:10px; letter-spacing:.3px; }
+@media(max-height:760px) and (max-width:599px) { .splash .sky { min-height:380px; }.splash .brand-area { padding-top:20px; }.splash .welcome-eyebrow { margin-bottom:10px; }.splash .girl-image { height:210px; }.splash .bottom-panel { padding-top:20px; }.splash .welcome-copy h2 { font-size:30px; } }

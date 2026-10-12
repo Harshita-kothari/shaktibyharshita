@@ -1,0 +1,32 @@
+import { t } from "../lib/i18n";import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Phone, PhoneOff, UserRound } from "lucide-react";
+import "./FakeCall.css";
+export default function FakeCall() {
+  const navigate = useNavigate();const [name, setName] = useState("Mom");const [delay, setDelay] = useState(10);const [stage, setStage] = useState("setup");const [remaining, setRemaining] = useState(0);const [elapsed, setElapsed] = useState(0);const [sound, setSound] = useState(true);const [audioError, setAudioError] = useState("");const context = useRef(null);const deadline = useRef(0);
+  useEffect(() => () => {context.current?.close();}, []);
+  useEffect(() => {
+    if (stage !== "waiting" && stage !== "connected") return;
+    const update = () => {if (stage === "waiting") {const left = Math.max(0, Math.ceil((deadline.current - Date.now()) / 1000));setRemaining(left);if (!left) setStage("ringing");} else setElapsed(Math.floor((Date.now() - deadline.current) / 1000));};
+    update();const timer = setInterval(update, 200);return () => clearInterval(timer);
+  }, [stage]);
+  useEffect(() => {
+    if (stage !== "ringing" || !sound || !context.current) return;
+    const audio = context.current;const nodes = [];
+    const ring = () => {if (audio.state !== "running") {setAudioError("Sound is unavailable. The visual call still works.");return;}for (const frequency of [440, 480]) {const oscillator = audio.createOscillator();const gain = audio.createGain();oscillator.frequency.value = frequency;gain.gain.setValueAtTime(0, audio.currentTime);gain.gain.linearRampToValueAtTime(.06, audio.currentTime + .03);gain.gain.setValueAtTime(.06, audio.currentTime + .7);gain.gain.linearRampToValueAtTime(0, audio.currentTime + .8);oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime + .85);nodes.push(oscillator);}};
+    ring();const timer = setInterval(ring, 2000);const stop = setTimeout(() => setStage("ended"), 30000);
+    return () => {clearInterval(timer);clearTimeout(stop);nodes.forEach((node) => {try {node.stop();node.disconnect();} catch {/* Already finished. */}});};
+  }, [stage, sound]);
+  useEffect(() => {if (stage !== "ringing") return;const timeout = setTimeout(() => setStage("ended"), 30000);return () => clearTimeout(timeout);}, [stage]);
+  const start = async (e) => {e.preventDefault();if (!name.trim()) return;setAudioError("");if (sound) {try {const Audio = window.AudioContext || window.webkitAudioContext;if (!Audio) throw Error();context.current ||= new Audio();await context.current.resume();} catch {setAudioError("Ringtone unavailable. The visual call still works.");}}deadline.current = Date.now() + Number(delay) * 1000;setRemaining(Number(delay));setStage(Number(delay) === 0 ? "ringing" : "waiting");};
+  const answer = () => {deadline.current = Date.now();setElapsed(0);setStage("connected");};
+  return <main className={`fake-page ${["ringing", "connected"].includes(stage) ? "fake-full" : ""}`}>
+ {t(!["ringing", "connected"].includes(stage) && <header className="fake-header"><button aria-label={t("Back to dashboard")} onClick={() => navigate("/dashboard")}><ArrowLeft size={21} /></button><div><h1>{t("Fake Call")}</h1><p>{t("A discreet way to step away")}</p></div></header>)}
+ <section className="fake-content">
+ {t(stage === "setup" && <form className="fake-card" onSubmit={start}><span className="fake-icon"><Phone size={30} /></span><h2>{t("A call, right when you need it")}</h2><p>{t("Schedule a simulated incoming call. No real number is dialled.")}</p><label htmlFor="fake-name">{t("Caller name")}</label><input id="fake-name" value={name} maxLength={40} required onChange={(e) => setName(e.target.value)} /><label htmlFor="fake-delay">{t("Ring after")}</label><select id="fake-delay" value={delay} onChange={(e) => setDelay(Number(e.target.value))}><option value={0}>{t("Now")}</option><option value={5}>{t("5 seconds")}</option><option value={10}>{t("10 seconds")}</option><option value={30}>{t("30 seconds")}</option></select><label className="fake-sound"><input type="checkbox" checked={sound} onChange={(e) => setSound(e.target.checked)} />{t("Play ringtone")}</label><button className="fake-primary">{t("Schedule fake call")}</button></form>)}
+ {t(stage === "waiting" && <div className="fake-card"><span className="fake-icon"><Phone size={30} /></span><h2>{t("Call scheduled")}</h2><strong className="fake-count">{t(remaining)}s</strong><p>{t(name.trim())} {t("will appear on your screen. Keep this page open and your sound on.")}</p><button className="fake-primary" onClick={() => setStage("ringing")}>{t("Ring now")}</button><button className="fake-cancel" onClick={() => setStage("setup")}>{t("Cancel scheduled call")}</button></div>)}
+ {t(["ringing", "connected"].includes(stage) && <div className="fake-call-screen"><span className="fake-label">{t("SIMULATED CALL")}</span><div className={`fake-avatar ${stage === "ringing" ? "fake-ringing" : ""}`}><UserRound size={56} /></div><h2>{t(name.trim())}</h2><p>{t(stage === "ringing" ? "Incoming call…" : `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`)}</p>{t(stage === "connected" && <small>{t("Simulation only \xB7 No microphone or real caller")}</small>)}<div className="fake-call-actions"><button className="fake-decline" aria-label={t(stage === "ringing" ? "Decline call" : "End call")} onClick={() => setStage("ended")}><PhoneOff size={26} /><span>{t(stage === "ringing" ? "Decline" : "End call")}</span></button>{t(stage === "ringing" && <button className="fake-answer" onClick={answer}><Phone size={26} /><span>{t("Answer")}</span></button>)}</div></div>)}
+ {t(stage === "ended" && <div className="fake-card"><span className="fake-icon"><PhoneOff size={30} /></span><h2>{t("Fake call ended")}</h2><p>{t("No real call was made or recorded.")}</p><button className="fake-primary" onClick={() => setStage("setup")}>{t("Set up another call")}</button><button className="fake-cancel" onClick={() => navigate("/dashboard")}>{t("Back to dashboard")}</button></div>)}
+ {t(audioError && <p role="status">{t(audioError)}</p>)} {t(!["ringing", "connected"].includes(stage) && <p className="fake-note">{t("Preview only. The call needs this page open; it cannot appear over other apps or on a locked screen.")}</p>)}
+ </section></main>;
+}

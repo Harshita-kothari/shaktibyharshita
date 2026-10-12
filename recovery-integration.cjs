@@ -1,0 +1,28 @@
+const {spawn}=require('node:child_process'),{tmpdir}=require('node:os'),path=require('node:path'),fs=require('node:fs'),assert=require('node:assert/strict'),{DatabaseSync}=require('node:sqlite'),{createHash,randomBytes}=require('node:crypto');
+(async()=>{const file=path.join(tmpdir(),'shakti-recovery-'+Date.now()+'.sqlite');const child=spawn(process.execPath,['backend/server.js'],{env:{...process.env,PORT:'5002',HOST:'127.0.0.1',DB_PATH:file,PUSH_KEY_FILE:file+'.keys',SMTP_HOST:'',NODE_ENV:'test'},stdio:'pipe'});let cookie='';
+async function req(route,body,session=cookie){const response=await fetch('http://127.0.0.1:5002/api/auth/'+route,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',Cookie:session},body:body===undefined?undefined:JSON.stringify(body)});if(response.headers.get('set-cookie'))cookie=response.headers.get('set-cookie').split(';')[0];return {status:response.status,body:await response.json()};}
+try{await new Promise((resolve,reject)=>{child.stdout.on('data',d=>{if(d.toString().includes('listening'))resolve();});child.on('exit',()=>reject(Error('API exited')));setTimeout(()=>reject(Error('API startup timeout')),10000).unref();});
+assert.equal((await req('recovery-options')).body.email,false);
+assert.equal((await req('recovery-code',{password:'InitialPassword123'},'')).status,401);
+assert.equal((await req('register',{name:'Recovery Test',email:'recover@example.invalid',password:'InitialPassword123'})).status,200);const oldSession=cookie;
+assert.equal((await req('recovery-code',{password:'wrong'})).status,401);
+const previous=(await req('recovery-code',{password:'InitialPassword123'})).body.code;
+const current=(await req('recovery-code',{password:'InitialPassword123'})).body.code;assert.match(current,/^[a-f0-9]{48}$/);
+assert.equal((await req('forgot-password',{email:'recover@example.invalid'})).status,503);
+assert.equal((await req('forgot-password',{email:'unknown@example.invalid'})).status,503);
+assert.equal((await req('reset-password',{email:'recover@example.invalid',code:previous,password:'NewPassword123'})).status,400);
+assert.equal((await req('reset-password',{email:'other@example.invalid',code:current,password:'NewPassword123'})).status,400);
+assert.equal((await req('reset-password',{email:'recover@example.invalid',code:current,password:'short'})).status,400);
+assert.equal((await req('reset-password',{email:'recover@example.invalid',code:current,password:'NewPassword123'})).status,200);
+assert.equal((await req('me',undefined,oldSession)).status,401);
+assert.equal((await req('reset-password',{email:'recover@example.invalid',code:current,password:'AnotherPassword123'})).status,400);
+assert.equal((await req('login',{email:'recover@example.invalid',password:'InitialPassword123'})).status,401);
+assert.equal((await req('login',{email:'recover@example.invalid',password:'NewPassword123'})).status,200);
+const db=new DatabaseSync(file);const user=db.prepare('SELECT id FROM users WHERE email=?').get('recover@example.invalid').id;
+const expired=randomBytes(32).toString('hex'),valid=randomBytes(32).toString('hex'),hash=v=>createHash('sha256').update(v).digest('hex');
+db.prepare('INSERT INTO password_resets VALUES(?,?,?)').run(hash(expired),user,Date.now()-1);db.prepare('INSERT INTO password_resets VALUES(?,?,?)').run(hash(valid),user,Date.now()+60000);
+assert.equal((await req('reset-password',{token:expired,password:'FinalPassword123'})).status,400);
+assert.equal((await req('reset-password',{token:valid,password:'FinalPassword123'})).status,200);
+assert.equal(db.prepare('SELECT count(*) AS n FROM password_resets WHERE user=?').get(user).n,0);assert.equal(db.prepare('SELECT count(*) AS n FROM sessions WHERE user=?').get(user).n,0);db.close();
+console.log('PASS: password verification, code rotation, single use, invalid/expired tokens, email configuration status, session revocation and password replacement. No emails were sent.');
+}finally{child.kill();await new Promise(resolve=>child.once('exit',resolve));for(const suffix of ['','-wal','-shm','.keys'])try{fs.unlinkSync(file+suffix);}catch{}}})().catch(e=>{console.error(e);process.exitCode=1;});

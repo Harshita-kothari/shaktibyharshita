@@ -1,0 +1,203 @@
+
+.sos-page {
+  min-height: 100vh;
+  background: #fff7fb;
+  color: #35243e;
+  padding-bottom: 30px;
+}
+
+.sos-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 6%;
+  background: white;
+  border-bottom: 1px solid #f1e3ec;
+}
+
+.sos-back {
+  width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: #fff0f7;
+  color: #c23c83;
+  cursor: pointer;
+}
+
+.sos-header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #35243e;
+}
+
+.sos-header p {
+  margin: 4px 0 0;
+  color: #897b91;
+  font-size: 13px;
+}
+
+.sos-content {
+  width: min(560px, 90%);
+  margin: 45px auto;
+  text-align: center;
+}
+
+.sos-icon {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 25px;
+  color: #d94e88;
+  background: #ffe4ef;
+}
+
+.sos-content > h2 {
+  margin: 0;
+  color: #35243e;
+  font-size: 25px;
+}
+
+.sos-description {
+  max-width: 420px;
+  margin: 13px auto 25px;
+  color: #83748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.sos-start-btn {
+  min-height: 54px;
+  padding: 0 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  background: linear-gradient(135deg, #e75d9c, #b84c96);
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.sos-start-btn:hover {
+  transform: translateY(-2px);
+}
+
+.sos-note {
+  margin-top: 18px;
+  color: #988b9d;
+  font-size: 12px;
+}
+
+.sos-countdown-card,
+.sos-result-card {
+  padding: 30px 24px;
+  border: 1px solid #f0dce8;
+  border-radius: 26px;
+  background: white;
+  box-shadow: 0 12px 35px rgba(95, 45, 77, 0.06);
+}
+
+.sos-status {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 30px;
+  color: #b33e7c;
+  background: #fff0f7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sos-countdown-card h2,
+.sos-result-card h2 {
+  margin: 18px 0 0;
+  color: #35243e;
+  font-size: 23px;
+}
+
+.sos-countdown {
+  width: 125px;
+  height: 125px;
+  margin: 22px auto;
+  display: grid;
+  place-items: center;
+  border: 7px solid #f4c5dd;
+  border-radius: 50%;
+  color: #c23c83;
+  background: #fff4fa;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.sos-countdown-card p,
+.sos-result-card p {
+  margin: 15px 0 22px;
+  color: #897b91;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.sos-cancel-btn {
+  min-height: 50px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #f0cbdc;
+  border-radius: 15px;
+  color: #b83d72;
+  background: #fff4f8;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sos-result-card > svg {
+  color: #35a477;
+}
+
+.sos-result-card.cancelled > svg {
+  color: #35a477;
+}
+
+.sos-police-link {
+  margin: 25px auto 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: none;
+  background: transparent;
+  color: #b84283;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .sos-header {
+    padding: 18px 5%;
+  }
+
+  .sos-content {
+    margin-top: 32px;
+  }
+
+  .sos-countdown-card,
+  .sos-result-card {
+    padding: 25px 18px;
+  }
+}.sos-send-now { display:flex; margin:15px auto 0; font-size:12px; min-height:44px; }
+.sos-countdown { animation:sos-count-pulse 1s ease-in-out infinite; }
+@keyframes sos-count-pulse { 50% { box-shadow:0 0 0 9px #fff1f7; } }
+@media(prefers-reduced-motion:reduce) { .sos-countdown { animation:none; } }
+.alert-actions { margin-top:20px; padding:24px; background:white; border:1px solid #ead5e4; border-radius:24px; text-align:left; }
+.alert-actions h2 { font-size:19px;font-weight:700; }.alert-actions h3 { margin-top:28px;font-size:16px; }.alert-actions p,.alert-actions small {font-size:12px;line-height:1.7;color:#786280}.alert-actions textarea {width:100%;padding:12px;margin-top:16px;border:1px solid #dfc4d9;border-radius:12px;background:#fff7fb;color:#49364f;font-family:inherit;font-size:13px;resize:vertical}.alert-actions .sos-start-btn {width:100%;font-size:13px;margin-top:10px}.sms-contact-link {display:block;border:1px solid #e6c9de;border-radius:12px;padding:12px;margin:10px 0;text-decoration:none;color:#a53c80;font-size:14px;font-weight:600}.alert-actions button:disabled {opacity:.55;cursor:wait}html[data-theme=dark] .alert-actions {background:#30263a;border-color:#5a3d5c}html[data-theme=dark] .alert-actions p,html[data-theme=dark] .alert-actions small {color:#d5b9d8}html[data-theme=dark] .sms-contact-link {color:#efb0d8;border-color:#72536d}

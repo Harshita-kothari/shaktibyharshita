@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: shakti
+    runtime: docker
+    plan: starter          # persistent disk needs a paid plan
+    numInstances: 1        # SQLite + timers need exactly one instance
+    healthCheckPath: /api/health
+    disk:
+      name: shakti-data
+      mountPath: /app/backend/data
+      sizeGB: 1
+    envVars:
+      - key: VAPID_SUBJECT
+        sync: false        # enter: mailto:your-real-email@example.com

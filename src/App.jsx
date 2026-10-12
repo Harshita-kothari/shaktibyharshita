@@ -1,0 +1,4 @@
+import { t } from "./lib/i18n";import { Shield, Heart, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import './App.css';
+export default function App() {const navigate = useNavigate();return <main className="shakti-splash"><div className="shakti-brand"><div className="shakti-emblem"><Shield size={106} strokeWidth={1.5} /><Heart size={40} fill="currentColor" /></div><h1>{t("Shakti")}</h1><p>{t("Safety. Support. Always.")}</p></div><p className="shakti-motto">{t("Kuch Karke")}<br />{t("Dikhana Hai \u2665")}</p><div className="shakti-waves" /><button className="shakti-primary splash-start" onClick={() => navigate('/onboarding')}>{t("Get Started")}<ArrowRight size={18} /></button><button className="splash-login" onClick={() => navigate('/login')}>{t("Already have an account? Sign in")}</button></main>;}

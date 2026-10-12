@@ -1,0 +1,321 @@
+
+.safety-tips-page {
+  min-height: 100vh;
+  padding: 32px;
+  background: #faf8ff;
+  color: #241b35;
+  font-family: inherit;
+}
+
+.tips-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto 28px;
+}
+
+.tips-back-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e9e1f4;
+  border-radius: 14px;
+  background: white;
+  color: #6d3fc0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tips-back-btn:hover {
+  background: #f1eaff;
+  transform: translateX(-2px);
+}
+
+.tips-eyebrow {
+  margin: 0 0 5px;
+  color: #8b5cf6;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tips-header h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+}
+
+.tips-subtitle {
+  margin: 8px 0 0;
+  color: #81768f;
+  font-size: 15px;
+}
+
+.tips-banner,
+.tips-section,
+.tips-emergency-card,
+.tips-footer-note {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tips-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  margin-bottom: 34px;
+  border: 1px solid #e9ddff;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #f0e8ff, #fff0f6);
+}
+
+.tips-banner-icon {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: white;
+  color: #8b5cf6;
+}
+
+.tips-banner h2,
+.tips-emergency-card h2 {
+  margin: 0 0 7px;
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.tips-banner p,
+.tips-emergency-card p {
+  margin: 0;
+  color: #756982;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.tips-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.tips-section-heading h2 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.tips-section-heading p {
+  margin: 6px 0 0;
+  color: #897f96;
+  font-size: 14px;
+}
+
+.tips-section-heading > span {
+  padding: 8px 13px;
+  border-radius: 20px;
+  background: #eee5ff;
+  color: #7545c5;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tips-categories {
+  display: grid;
+  gap: 14px;
+}
+
+.tips-category {
+  overflow: hidden;
+  border: 1px solid #eee7f5;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 5px 18px rgba(55, 31, 82, 0.04);
+}
+
+.tips-category-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border: none;
+  background: transparent;
+  color: #332641;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tips-category-btn > svg {
+  margin-left: auto;
+  color: #8b5cf6;
+  flex-shrink: 0;
+}
+
+.tips-category-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #f2eaff;
+  color: #8b5cf6;
+  flex-shrink: 0;
+}
+
+.tips-category-name {
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.tips-category-name small {
+  display: block;
+  margin-top: 5px;
+  color: #968aa4;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tips-list {
+  padding: 0 22px 18px;
+  border-top: 1px solid #f2edf7;
+}
+
+.tips-item {
+  display: flex;
+  gap: 14px;
+  padding: 18px 0;
+}
+
+.tips-item + .tips-item {
+  border-top: 1px solid #f4eff8;
+}
+
+.tips-number {
+  flex-shrink: 0;
+  color: #a17ae5;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.tips-item h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.tips-item p {
+  margin: 0;
+  color: #81768e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.tips-emergency-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 24px;
+  border-radius: 20px;
+  background: #fff0f3;
+  border: 1px solid #ffdce5;
+}
+
+.tips-emergency-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: white;
+  color: #d94872;
+}
+
+.tips-emergency-content button {
+  margin-top: 15px;
+  padding: 11px 17px;
+  border: none;
+  border-radius: 12px;
+  background: #d94872;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tips-emergency-content button:hover {
+  background: #bd315b;
+  transform: translateY(-1px);
+}
+
+.tips-footer-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+  color: #94899f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tips-footer-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tips-footer-note p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .safety-tips-page {
+    padding: 22px 16px;
+  }
+
+  .tips-banner {
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .tips-banner-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .tips-banner h2 {
+    font-size: 17px;
+  }
+
+  .tips-section-heading h2 {
+    font-size: 20px;
+  }
+
+  .tips-category-btn {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .tips-category-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .tips-list {
+    padding: 0 16px 12px;
+  }
+
+  .tips-emergency-card {
+    padding: 18px;
+  }
+}
